@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jQuery POS</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="app" class="card">
+            <h1>jQuery POS!</h1>
+
+            <div class="button container">
+                <button id="Chicken" class="item-btn">Chicken - 1.99 a lb</button>
+                <button id="Rice" class="item-btn">Rice - 2.15 a box</button>
+                <button id="Potatoes" class="item-btn">Potatoes - .99 a lb</button>
+            </div>
+
+            <div class="item-entry container">
+                Item Name: <input type="text" id="item-name">
+                Item Price: <input type="number" id="item-price">
+                <button id="item-submit">Enter</button>
+            </div>
+
+            <div class="card reciept container">
+                <p>Cart</p>
+                <div id="cart-list">
+                    <!-- Cart items will go here -->
+                    <div class="item" data-key="-1">Nothing in the cart</div>
+                </div>
+
+                <hr>
+
+                <div id="tax-and-total">
+                    <div id="subtotal">
+                        <div class="left">
+                            Subtotal
+                        </div>
+                        <div class="right value">
+                            <!-- Subtotal Value goes here -->
+                             $0.00
+                        </div>
+                    </div>
+                    
+                    <div id="tax">
+                        <div class="left">
+                            Tax - 10%
+                        </div>
+                        <div class="right value">
+                            <!-- Tax value goes here -->
+                            $0.00
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div id="total">
+                        <div class="left">
+                            Total
+                        </div>
+                        <div class="right value">
+                            <!-- Total Value goes here -->
+                             $0.00
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <script src="lib/jquery-3.2.1.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
