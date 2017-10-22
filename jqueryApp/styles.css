@@ -13,4 +13,19 @@ body{
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
   overflow: hidden;
+  padding: 10px;
+}
+
+.container {
+  margin: 10px;
+}
+
+.left, .right {
+  display: inline-flex;
+  width: 49%;
+}
+
+.reciept {
+  width: 50%;
+  margin: 0 auto;
 }

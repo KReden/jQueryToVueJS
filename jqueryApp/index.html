@@ -6,7 +6,70 @@
     </head>
     <body>
         <div id="app" class="card">
-            <p>jQuery POS!</p>
+            <h1>jQuery POS!</h1>
+
+            <div class="button container">
+                <button class="btn">Chicken</button>
+                <button class="btn">Rice</button>
+                <button class="btn">Potatoes</button>
+            </div>
+
+            <div class="item-entry container">
+                Item Name: <input type="text" id="item-name">
+                Item Price: <input type="number" id="item-price">
+                <button>Enter</button>
+            </div>
+
+            <div class="card reciept container">
+                <div class="items-list">
+                    <div class="item">
+                        <div class="left">Item</div>
+                        <div class="right">$0.00</div>
+                    </div>
+                    <div class="item">
+                        <div class="left">Item</div>
+                        <div class="right">$0.00</div>
+                    </div>
+                    <div class="item">
+                        <div class="left">Item</div>
+                        <div class="right">$0.00</div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="tax-and-total">
+                    <div class="subtotal">
+                        <div class="left">
+                            Subtotal
+                        </div>
+                        <div class="right">
+                            $0.00
+                        </div>
+                    </div>
+                    
+                    <div class="tax">
+                        <div class="left">
+                            Tax - 10%
+                        </div>
+                        <div class="right">
+                            $0.00
+                        </div>
+                    </div>
+
+                    <hr>
+                    
+                    <div class="total">
+                        <div class="left">
+                            Total
+                        </div>
+                        <div class="right">
+                            $0.00
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
         <script src="lib/jquery-3.2.1.min.js"></script>
         <script src="main.js"></script>
