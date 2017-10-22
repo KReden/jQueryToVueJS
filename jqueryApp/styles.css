@@ -2,6 +2,11 @@ body{
   background-color: #d3d3cf;
   padding: 20px;
 }
+
+p {
+  text-align: left;
+}
+
 #app{
   text-align: center;
   height: 1024px;
@@ -20,9 +25,21 @@ body{
   margin: 10px;
 }
 
+.item {
+  margin-bottom: 10px;
+}
+
 .left, .right {
   display: inline-flex;
-  width: 49%;
+  width: 45%;
+}
+
+#tax-and-total .left {
+  padding-left: 25px; 
+}
+
+.remove-item {
+  display: inline-flex;
 }
 
 .reciept {

@@ -1,22 +1,6 @@
 # jQuery To VueJS
 
-#### Step 0 (jQuery App)
-
-- Download [jQuery]
-- Setup boilerplate
-  - index.html
-  - styles.css
-  - script.js
-
-#### Step 1
-- Add elements to page
-  - Item Buttons
-  - Name & Price text box, Submit button
-  - Reciept div
-    - items
-    - prices
-    - tax
-    - total
-
+Example app moving from [jQuery] to [Vue.js]
 
 [jquery]: http://jquery.com/download/
+[vue.js]:https://vuejs.org/v2/guide/
