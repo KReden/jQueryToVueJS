@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <title>VueJs POS!</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="app" class="card">
+            <h1>{{ title }}</h1>
+
+            <div class="button container">
+                <button v-for="item in presetItems"
+                        v-bind:id="item.name"
+                        @click="addItemToCart(item)"
+                        class="item-btn">
+                    {{ item.text }}
+                </button>
+            </div>
+
+            <div class="item-entry container">
+                Item Name: <input v-model="itemName" type="text" id="item-name">
+                Item Price: <input v-model="itemPrice" type="number" id="item-price">
+                <button @click="addItemToCart(newItem)" id="item-submit">Enter</button>
+            </div>
+
+            <div class="card reciept container">
+                <p>Cart</p>
+                <div id="cart-list">
+                    <!-- Cart items will go here -->
+                    <div v-if="cartEmpty" class="item">Nothing in the cart</div>
+                    <div v-else v-for="(item, index) in cart" class="item">
+                        <button @click="removeItemFromCart(index)" class="remove-item">X</button>
+                        <div class="left">{{item.name | capitalize}}</div>
+                        <div class="right">{{item.price | formatMoney}}</div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div id="tax-and-total">
+                    <div id="subtotal">
+                        <div class="left">
+                            Subtotal
+                        </div>
+                        <div class="right value">
+                            <!-- Subtotal Value goes here -->
+                            {{ subtotal | formatMoney }}
+                        </div>
+                    </div>
+                    
+                    <div id="tax">
+                        <div class="left">
+                            Tax - 10%
+                        </div>
+                        <div class="right value">
+                            <!-- Tax value goes here -->
+                            {{ calculatedTax | formatMoney }}
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div id="total">
+                        <div class="left">
+                            Total
+                        </div>
+                        <div class="right value">
+                            <!-- Total Value goes here -->
+                            {{ calculatedTotal | formatMoney }}
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <script src="lib/vue.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
