@@ -47,6 +47,9 @@ new Vue({
       // No need to do any DOM id lookup or switch statement
       this.cart.push(item)
       this.newItem = ""
+    },
+    removeItemFromCart(index){
+      this.cart.splice(index, 1)
     }
   }
 })
