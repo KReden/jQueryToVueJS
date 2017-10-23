@@ -6,7 +6,6 @@ new Vue({
     cart: [],
     salesTax: 0.1,
     currentId: 1,
-    subtotal: 0,
     itemName: "",
     itemPrice: null,
     presetItems: [
@@ -22,12 +21,17 @@ new Vue({
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
     },
+    formatMoney: (value) => {
+      if (!value) return '$0.00'
+      value = parseFloat(value)
+      return `$${value.toFixed(2)}`
+    }
   },
 
   computed: {
     newItem: {
       get(){
-        return { name: this.itemName, price: this.itemPrice }
+        return { name: this.itemName, price: parseFloat(this.itemPrice) }
       },
       set(val){
         this.itemName = val
@@ -36,6 +40,22 @@ new Vue({
     },
     cartEmpty(){
       return this.cart.length === 0
+    },
+    subtotal(){
+      if(this.cartEmpty) return
+      let result = 0
+      this.cart.forEach(item => {
+        result += item.price
+      })
+      return result
+    },
+    calculatedTax(){
+      if (this.cartEmpty) return
+      return this.subtotal * this.salesTax
+    },
+    calculatedTotal(){
+      if (this.cartEmpty) return
+      return this.subtotal + this.calculatedTax
     }
   },
 

@@ -31,7 +31,7 @@
                     <div v-else v-for="(item, index) in cart" class="item">
                         <button @click="removeItemFromCart(index)" class="remove-item">X</button>
                         <div class="left">{{item.name | capitalize}}</div>
-                        <div class="right">${{item.price}}</div>
+                        <div class="right">{{item.price | formatMoney}}</div>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                         </div>
                         <div class="right value">
                             <!-- Subtotal Value goes here -->
-                             $0.00
+                            {{ subtotal | formatMoney }}
                         </div>
                     </div>
                     
@@ -54,7 +54,7 @@
                         </div>
                         <div class="right value">
                             <!-- Tax value goes here -->
-                            $0.00
+                            {{ calculatedTax | formatMoney }}
                         </div>
                     </div>
 
@@ -66,7 +66,7 @@
                         </div>
                         <div class="right value">
                             <!-- Total Value goes here -->
-                             $0.00
+                            {{ calculatedTotal | formatMoney }}
                         </div>
                     </div>
                     
