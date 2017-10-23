@@ -30,8 +30,8 @@
                     <div v-if="cartEmpty" class="item">Nothing in the cart</div>
                     <div v-else v-for="item in cart" class="item">
                         <button class="remove-item">X</button>
-                        <div class="left">${{item.name}}</div>
-                        <div class="right">{{item.price}}</div>
+                        <div class="left">{{item.name | capitalize}}</div>
+                        <div class="right">${{item.price}}</div>
                     </div>
                 </div>
 
