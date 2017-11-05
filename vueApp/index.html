@@ -28,9 +28,14 @@
                 <div id="cart-list">
                     <!-- Cart items will go here -->
                     <div v-if="cartEmpty" class="item">Nothing in the cart</div>
-                    <div v-else v-for="(item, index) in cart" class="item">
+                    <div v-else
+                         v-for="(item, index) in cart"
+                         v-bind:class="{ sale: item.sale }"
+                         class="item">
                         <button @click="removeItemFromCart(index)" class="remove-item">X</button>
-                        <div class="left">{{item.name | capitalize}}</div>
+                        <div class="left">
+                          {{item.name | capitalize}} {{ item.sale ? '- On Sale!' : '' }}
+                        </div>
                         <div class="right">{{item.price | formatMoney}}</div>
                     </div>
                 </div>
@@ -47,7 +52,7 @@
                             {{ subtotal | formatMoney }}
                         </div>
                     </div>
-                    
+
                     <div id="tax">
                         <div class="left">
                             Tax - 10%
@@ -69,7 +74,7 @@
                             {{ calculatedTotal | formatMoney }}
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
