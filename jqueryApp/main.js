@@ -40,6 +40,11 @@ $(() => {
   $("#item-submit").click(function(){
     let $itemNameInput = $(this).siblings("#item-name")
     let $itemPriceInput = $(this).siblings("#item-price")
+    let $itemNameInputVal = $itemNameInput.val()
+    let $itemPriceInputVal = $itemPriceInput.val()
+
+    // Return if no name or price
+    if($itemNameInputVal === '' || $itemPriceInputVal === '') return
 
     addItemToCart({
       name: $itemNameInput.val(),
