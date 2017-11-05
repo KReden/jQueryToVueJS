@@ -11,21 +11,25 @@ $(() => {
   let presetItems = [
     { name: "Chicken", price: 1.99 },
     { name: "Rice", price: 2.15 },
-    { name: "Potatoes", price: .99 }
+    { name: "Potatoes", price: .99 },
+    { name: "Milk", price: 2.49, sale: true },
   ]
 
   // Click handlers
   $(".item-btn").click(function() {
-    let domId = $(this).attr('id')
+    let name = $(this).attr('id')
     presetItems.forEach((item) => {
       switch (true) {
-        case item.name === domId:
+        case item.name === name:
           addItemToCart(item)
           break
-        case item.name === domId:
+        case item.name === name:
           addItemToCart(item)
           break
-        case item.name === domId:
+        case item.name === name:
+          addItemToCart(item)
+          break
+        case item.name === name:
           addItemToCart(item)
           break
       }
@@ -39,7 +43,7 @@ $(() => {
 
     addItemToCart({
       name: $itemNameInput.val(),
-      price: $itemPriceInput.val()
+      price: parseFloat($itemPriceInput.val())
     })
 
     $itemNameInput.val('')
@@ -74,9 +78,17 @@ $(() => {
 
     // For each item in our cart, add another div element to the html string.
     cart.forEach(item => {
-      htmlString += `<div class="item" data-key="${item.id}">
+      let saleClass = ''
+      let saleText = ''
+
+      if(item.sale){
+        saleClass = item.sale ? 'sale' : ''
+        saleText = "- On Sale!"
+      }
+
+      htmlString += `<div class="item ${saleClass}" data-key="${item.id}">
                         <button class="remove-item">X</button>
-                        <div class="left">${item.name.capitalize()}</div>
+                        <div class="left">${item.name.capitalize()} ${saleText}</div>
                         <div class="right">$${item.price}</div>
                       </div>`
     })
