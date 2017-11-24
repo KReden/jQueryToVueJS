@@ -35,7 +35,7 @@ p {
 }
 
 #tax-and-total .left {
-  padding-left: 25px; 
+  padding-left: 25px;
 }
 
 .remove-item {
@@ -45,4 +45,8 @@ p {
 .reciept {
   width: 50%;
   margin: 0 auto;
+}
+
+.sale {
+  color: green;
 }

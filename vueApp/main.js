@@ -11,7 +11,8 @@ new Vue({
     presetItems: [
       { name: "Chicken", price: 1.99, text: "Chicken - 1.99 a lb" },
       { name: "Rice", price: 2.15, text: "Rice - 2.15 a lb" },
-      { name: "Potatoes", price: .99, text: "Potatoes - .99 a lb" }
+      { name: "Potatoes", price: .99, text: "Potatoes - .99 a lb" },
+      { name: "Milk", price: 2.49, text: "Milk - SALE 2.49 a gallon", sale: true },
     ]
   },
 
