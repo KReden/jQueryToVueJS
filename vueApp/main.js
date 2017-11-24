@@ -2,8 +2,8 @@
 new Vue({
   el: "#app",
   data: {
-    title: "A Vue.js POS!",
-    cart: [],
+    title: "Vue.js Point Of Sales!",
+    reciept: [],
     salesTax: 0.1,
     currentId: 1,
     itemName: "",
@@ -39,38 +39,38 @@ new Vue({
         this.itemPrice = val
       }
     },
-    cartEmpty(){
-      return this.cart.length === 0
+    recieptEmpty(){
+      return this.reciept.length === 0
     },
     subtotal(){
-      if(this.cartEmpty) return
+      if(this.recieptEmpty) return
       let result = 0
-      this.cart.forEach(item => {
+      this.reciept.forEach(item => {
         result += item.price
       })
       return result
     },
     calculatedTax(){
-      if (this.cartEmpty) return
+      if (this.recieptEmpty) return
       return this.subtotal * this.salesTax
     },
     calculatedTotal(){
-      if (this.cartEmpty) return
+      if (this.recieptEmpty) return
       return this.subtotal + this.calculatedTax
     }
   },
 
   methods:{
-    addItemToCart(item){
+    addItemToReciept(item){
       // Don't do anything if no item or item.name/item.price is blank
       if(!item || item.name === "" || item.price === "") { return }
       // Can pass item object
       // No need to do any DOM id lookup or switch statement
-      this.cart.push(item)
+      this.reciept.push(item)
       this.newItem = ""
     },
-    removeItemFromCart(index){
-      this.cart.splice(index, 1)
+    removeItemFromReciept(index){
+      this.reciept.splice(index, 1)
     }
   }
 })

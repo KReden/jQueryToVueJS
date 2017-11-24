@@ -7,7 +7,7 @@ $(() => {
   const SALES_TAX = 0.1
   let currentId = 1
   let subtotal = 0
-  let cart = []
+  let reciept = []
   let presetItems = [
     { name: "Chicken", price: 1.99 },
     { name: "Rice", price: 2.15 },
@@ -21,27 +21,27 @@ $(() => {
     presetItems.forEach((item) => {
       switch (true) {
         case item.name === name:
-          addItemToCart(item)
+          addItemToReciept(item)
           break
         case item.name === name:
-          addItemToCart(item)
+          addItemToReciept(item)
           break
         case item.name === name:
-          addItemToCart(item)
+          addItemToReciept(item)
           break
         case item.name === name:
-          addItemToCart(item)
+          addItemToReciept(item)
           break
       }
     })
-    console.log(subtotal, cart);
+    console.log(subtotal, reciept);
   })
 
   $("#item-submit").click(function(){
     let $itemNameInput = $(this).siblings("#item-name")
     let $itemPriceInput = $(this).siblings("#item-price")
 
-    addItemToCart({
+    addItemToReciept({
       name: $itemNameInput.val(),
       price: parseFloat($itemPriceInput.val())
     })
@@ -50,34 +50,34 @@ $(() => {
     $itemPriceInput.val('')
   })
 
-  $("#cart-list").on("click", ".remove-item", function(){
+  $("#reciept-list").on("click", ".remove-item", function(){
     let key = $(this).parent().data("key")
-    let indexOfItem = cart.findIndex(item => item.id == key)
+    let indexOfItem = reciept.findIndex(item => item.id == key)
 
-    // Remove from total, cart array, and DOM
-    cart.splice(indexOfItem, 1)
+    // Remove from total, reciept array, and DOM
+    reciept.splice(indexOfItem, 1)
     updateSubtotal()
     $(this).parent().remove()
 
-    // Check if no more items in cart
-    if(cart.length === 0){
+    // Check if no more items in reciept
+    if(reciept.length === 0){
       let htmlString = `<div class="item" data-key="-1">
-                          Nothing in the cart
+                          Nothing in the reciept
                         </div>`
-      $("#cart-list").html(htmlString)
+      $("#reciept-list").html(htmlString)
     }
   })
 
   // Functions
-  function addItemToCart(item) {
+  function addItemToReciept(item) {
     let htmlString = ""
     item.id = currentId
     currentId = ++currentId
-    cart.push(item)
+    reciept.push(item)
     updateSubtotal()
 
-    // For each item in our cart, add another div element to the html string.
-    cart.forEach(item => {
+    // For each item in our reciept, add another div element to the html string.
+    reciept.forEach(item => {
       let saleClass = ''
       let saleText = ''
 
@@ -92,13 +92,13 @@ $(() => {
                         <div class="right">$${item.price}</div>
                       </div>`
     })
-    // Set the html of our #cart-list to the html string
-    $("#cart-list").html(htmlString)
+    // Set the html of our #reciept-list to the html string
+    $("#reciept-list").html(htmlString)
   }
 
   function updateSubtotal() {
     let subtotal = 0
-    cart.forEach(item => {
+    reciept.forEach(item => {
       subtotal += item.price
     })
     calculateTax(subtotal)
