@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Vue.js Point Of Sales!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="app" class="card">
+    <h1>{{ title }}</h1>
+
+    <div class="button container">
+      <item-button v-for="item in presetItems" :item="item" v-on:add-to-receipt="addItemToReceipt"></item-button>
+    </div>
+
+    <div class="item-entry container">
+      Item Name:
+      <input v-model="itemName" type="text" id="item-name"> Item Price:
+      <input v-model="itemPrice" type="number" id="item-price">
+      <button @click="addItemToReceipt(newItem)" id="item-submit">Enter</button>
+    </div>
+
+    <div class="card reciept container">
+      <p>Reciept</p>
+      <receipt-list></receipt-list>
+
+      <hr>
+
+      <div id="tax-and-total">
+        <div id="subtotal">
+          <div class="left">
+            Subtotal
+          </div>
+          <div class="right value">
+            <!-- Subtotal Value goes here -->
+            {{ subtotal | formatMoney }}
+          </div>
+        </div>
+
+        <div id="tax">
+          <div class="left">
+            Tax - 10%
+          </div>
+          <div class="right value">
+            <!-- Tax value goes here -->
+            {{ calculatedTax | formatMoney }}
+          </div>
+        </div>
+
+        <hr>
+
+        <div id="total">
+          <div class="left">
+            Total
+          </div>
+          <div class="right value">
+            <!-- Total Value goes here -->
+            {{ calculatedTotal | formatMoney }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Libs -->
+  <script src="lib/vue.js"></script>
+  <script src="lib/vuex.js"></script>
+  <!-- Store -->
+  <script src="store.js"></script>
+  <!-- Components -->
+  <script src="components/ItemButton.js"></script>
+  <script src="components/RecieptList.js"></script>
+  <!-- App -->
+  <script src="main.js"></script>
+</body>
+
+</html>
